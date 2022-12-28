@@ -1,5 +1,5 @@
 
-echo "This script install ROS 2 Dashing Diademata on the Beaglebone Blue Board"
+echo "This script install ROS 2 humble on the Beaglebone Blue Board"
 
 sudo locale-gen en_US en_US.UTF-8
 sudo update-locale LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8
@@ -67,9 +67,9 @@ sudo apt install --no-install-recommends -y \
   libcunit1-dev
 
 echo "Get ROS 2 code ..."
-mkdir -p ~/ros2_dashing/src
-cd ~/ros2_dashing
-wget https://raw.githubusercontent.com/ros2/ros2/dashing/ros2.repos
+mkdir -p ~/ros2_humble/src
+cd ~/ros2_humble
+wget https://raw.githubusercontent.com/ros2/ros2/humble/ros2.repos
 vcs import src < ros2.repos
 
 echo "Done."
@@ -79,13 +79,10 @@ sudo rosdep init
 rosdep update
 rosdep install --from-paths src \
     --ignore-src \
-    --rosdistro dashing -y \
+    --rosdistro humble -y \
     --skip-keys "console_bridge \
-        fastcdr \
-        fastrtps \
-        libopensplice67 \
-        libopensplice69 \
-        rti-connext-dds-5.3.1 \
+        fastcdr \        
+        rti-connext-dds-6.0.1 \
         urdfdom_headers"
 
 touch \
