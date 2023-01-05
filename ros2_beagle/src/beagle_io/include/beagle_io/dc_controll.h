@@ -21,7 +21,7 @@ namespace beagle_io
     // callback function
     void set_dc_values(const sensor_msgs::msg::Joy::SharedPtr joy);
 
-    }
+    };
 
 }
 
