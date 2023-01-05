@@ -33,11 +33,14 @@ ament_target_dependencies(${PROJECT_NAME}_imu rclcpp sensor_msgs geometry_msgs)
 add_executable(${PROJECT_NAME}_servos src/pwm_control.cpp)
 ament_target_dependencies(${PROJECT_NAME}_servos rclcpp sensor_msgs)
 
+add_executable(${PROJECT_NAME}_dc src/dc_controll.cpp)
+ament_target_dependencies(${PROJECT_NAME}_dc rclcpp sensor_msgs)
 
 #Install C++ targets
 install(TARGETS
   ${PROJECT_NAME}_imu
   ${PROJECT_NAME}_servos
+  ${PROJECT_NAME}_dc
   DESTINATION lib/${PROJECT_NAME}
 )
 
